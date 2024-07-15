@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django VPS</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top top-nav">
+        <a class="navbar-brand" href="index.html">Lazy Hosting</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="setup.html">Server Setup</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="django.html">Django</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="fastapi.html">FastAPI</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="flask.html">Flask</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mern.html">MERN</a>
+                </li>
+                
+            </ul>
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="settingsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Settings
+                </a>
+                <div class="dropdown-menu dropdown-menu-right p-4" aria-labelledby="settingsDropdown">
+                    <div class="form-group">
+                        <label for="projectFolderName">ProjectFolderName</label>
+                        <input type="text" class="form-control" id="projectFolderName" placeholder="Enter ProjectFolderName">
+                    </div>
+                    <div class="form-group">
+                        <label for="projectName">ProjectName</label>
+                        <input type="text" class="form-control" id="projectName" placeholder="Enter ProjectName">
+                    </div>
+                    <div class="form-group">
+                        <label for="appName">AppName</label>
+                        <input type="text" class="form-control" id="appName" placeholder="Enter AppName">
+                    </div>
+                    <div class="form-group">
+                        <label for="userName">UserName</label>
+                        <input type="text" class="form-control" id="userName" placeholder="Enter UserName">
+                    </div>
+                    <button class="btn btn-primary" onclick="applySettings()">Apply</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+        
+
+        <main  role="main" class="container mt-5 pt-5">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1>Getting Started with Django VPS Hosting</h1>
+            </div>
+
+            <div class="content-box">
+                
+                <br>
+                <h5>NOTE: ProjectFolderName and ProjectName can be kept the same or different</h5>
+                <br>
+
+                <h2>Setting the project folder</h2>
+
+                <h3 class="h3-side">Creating Project folder using GIT & Changing Current Directory ( Use token@ for Private repo )</h3>
+                <pre class="bg-light p-3 code-block"><code>git clone [Git_link]
+cd ~/ProjectFolderName</code> <button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="mkdir ~/ProjectFolderName\ncd ~/ProjectFolderName"><i class="fas fa-copy"></i></button></pre>
+                
+<h3 class="h3-side">OR Just</h3>
+<h3 class="h3-side">Create Project folder & Changing Current Directory</h3>
+                <pre class="bg-light p-3 code-block"><code>mkdir ~/ProjectFolderName
+cd ~/ProjectFolderName</code> <button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="mkdir ~/ProjectFolderName\ncd ~/ProjectFolderName"><i class="fas fa-copy"></i></button></pre>
+
+
+                <h3 class="h3-side">Creating & activating Virtual env</h3>
+                <pre class="bg-light p-3 code-block"><code>virtualenv env
+source env/bin/activate
+</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="virtualenv env\nsource env/bin/activate"><i class="fas fa-copy"></i></button></pre>
+                
+<h3 class="h3-side">Installing django and gunicorn or requirements.txt</h3>
+                <pre class="bg-light p-3 code-block"><code>pip install django gunicorn</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="pip install django gunicorn"><i class="fas fa-copy"></i></button></pre>
+                
+                <pre class="bg-light p-3 code-block"><code>pip install -r requirements.txt</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="pip install -r requirements.txt"><i class="fas fa-copy"></i></button></pre>
+
+
+                <h3 class="h3-side">Creating Django app (or just skip this step if git clone)</h3>
+                <pre class="bg-light p-3 code-block"><code>django-admin startproject AppName ~/ProjectFolderName</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="django-admin startproject AppName ~/ProjectFolderName"><i class="fas fa-copy"></i></button></pre>
+               
+                <h3 class="h3-side">Make Sure To Create and Edit the .env file</h3>
+                <h3 class="h3-side border-bottom">Also Change The Debug To False <br><br></h3>
+                
+
+
+                <h3 class="h3-side">Migrating the database</h3>
+                <pre class="bg-light p-3 code-block"><code>python manage.py makemigrations
+python manage.py migrate</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="python manage.py makemigrations\npython manage.py migrate"><i class="fas fa-copy"></i></button></pre>
+
+
+
+                <h3 class="h3-side">Testing Project Normaly for any Errors</h3>
+                <pre class="bg-light p-3 code-block"><code>python manage.py runserver 0.0.0.0:8000</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="python manage.py runserver 0.0.0.0:8000"><i class="fas fa-copy"></i></button></pre>
+
+
+                <h3 class="h3-side">Once The Above Test pass , Test using gunicorn</h3>
+                <pre class="bg-light p-3 code-block"><code>gunicorn --bind 0.0.0.0:8000 AppName.wsgi</code> <button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="gunicorn --bind 0.0.0.0:8000 AppName.wsgi"><i class="fas fa-copy"></i></button></pre>
+
+
+                <h3 class="h3-side">Once All Works Great File Setup is Complete <br><br>Deactivate the virtual env</h3>     
+                <pre class="bg-light p-3 code-block"><code>deactivate</code> <button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="deactivate"><i class="fas fa-copy"></i></button></pre>
+                
+
+
+
+
+
+                <br><br>
+                <h2>Configuring Gunicorn</h2>
+
+            <h3 class="h3-side">Creating and Editing the Socket Unit File</h3>
+            <pre class="bg-light p-3 code-block">
+<code>sudo nano /etc/systemd/system/ProjectName.socket</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="sudo nano /etc/systemd/system/ProjectName.socket"><i class="fas fa-copy"></i></button></pre>
+            <h3 class="h3-side">Inside The File Add The Below Code</h3>
+            <pre class="bg-light p-3 code-block">
+<code>[Unit]
+Description=gunicorn socket
+
+[Socket]
+ListenStream=/run/ProjectName.sock
+
+[Install]
+WantedBy=sockets.target</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="[Unit]\nDescription=gunicorn socket\n\n[Socket]\nListenStream=/run/ProjectName.sock\n\n[Install]\nWantedBy=sockets.target"><i class="fas fa-copy"></i></button></pre>
+            <h4 class="h3-side">Save by pressing <kbd>Ctrl</kbd>+<kbd>X</kbd> Then <kbd>Y</kbd> Then <kbd>Enter</kbd></h4><br>
+
+            <h3 class="h3-side">Creating and Editing the Service Unit File</h3>
+            <pre class="bg-light p-3 code-block">
+<code>sudo nano /etc/systemd/system/ProjectName.service</code>
+<button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="sudo nano /etc/systemd/system/ProjectName.service"><i class="fas fa-copy"></i></button></pre>
+            <h3 class="h3-side">Inside The File Add The Below Code</h3>
+
+            <pre class="bg-light p-3 code-block">
+<code>[Unit]
+Description=gunicorn daemon
+Requires=ProjectName.socket
+After=network.target
+
+[Service]
+User=UserName
+Group=www-data
+WorkingDirectory=/home/UserName/ProjectFolderName
+ExecStart=/home/UserName/ProjectFolderName/env/bin/gunicorn \
+        --access-logfile - \
+        --workers 3 \
+        --bind unix:/run/ProjectName.sock \
+        AppName.wsgi:application
+
+[Install]
+WantedBy=multi-user.target</code>
+<button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="[Unit]\nDescription=gunicorn daemon\nRequires=ProjectName.socket\nAfter=network.target\n\n[Service]\nUser=UserName\nGroup=www-data\nWorkingDirectory=/home/UserName/ProjectFolderName\nExecStart=/home/UserName/ProjectFolderName/env/bin/gunicorn \\\n          --access-logfile - \\\n          --workers 3 \\\n          --bind unix:/run/ProjectName.sock \\\n          AppName.wsgi:application\n\n[Install]\nWantedBy=multi-user.target"><i class="fas fa-copy"></i></button></pre>
+            <h4 class="h3-side">Save by pressing <kbd>Ctrl</kbd>+<kbd>X</kbd> Then <kbd>Y</kbd> Then <kbd>Enter</kbd></h4><br>
+
+            <h3 class="h3-side">Starting and Enabling the Socket</h3>
+            <pre class="bg-light p-3 code-block"><code>sudo systemctl start ProjectName.socket
+sudo systemctl enable ProjectName.socket</code>
+<button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="sudo systemctl start ProjectName.socket\nsudo systemctl enable ProjectName.socket"><i class="fas fa-copy"></i></button></pre>
+
+            <br><br>
+
+            <h2>Configuring Nginx</h2>
+
+            <h3 class="h3-side">Creating and Editing the Nginx Configuration File</h3>
+            <pre class="bg-light p-3 code-block"><code>sudo nano /etc/nginx/sites-available/ProjectName</code>
+<button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="sudo nano /etc/nginx/sites-available/ProjectName"><i class="fas fa-copy"></i></button></pre>
+            <h3 class="h3-side">Inside The File Add The Below Code</h3>
+            <pre class="bg-light p-3 code-block">
+<code>server {
+    listen 80;
+    server_name www.lazythinkers.in;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root /home/UserName/ProjectFolderName;
+    }
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/run/ProjectName.sock;
+    }
+}</code>
+<button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="server {\n    listen 80;\n    server_name www.lazythinkers.in;\n\n    location = /favicon.ico { access_log off; log_not_found off; }\n    location /static/ {\n        root /home/UserName/ProjectFolderName;\n    }\n\n    location / {\n        include proxy_params;\n        proxy_pass http://unix:/run/ProjectName.sock;\n    }\n}"><i class="fas fa-copy"></i></button></pre>
+            <h4 class="h3-side">Save by pressing <kbd>Ctrl</kbd>+<kbd>X</kbd> Then <kbd>Y</kbd> Then <kbd>Enter</kbd></h4><br>
+
+            <h3 class="h3-side">Enabling the Nginx Configuration & Restarting Nginx</h3>
+            <pre class="bg-light p-3 code-block">
+<code>sudo ln -s /etc/nginx/sites-available/ProjectName /etc/nginx/sites-enabled/
+sudo systemctl restart nginx</code>
+<button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="sudo ln -s /etc/nginx/sites-available/ProjectName /etc/nginx/sites-enabled/\nsudo systemctl restart nginx"><i class="fas fa-copy"></i></button></pre>
+
+
+
+            <h3 class="h3-side border-bottom">The App Should Be Up and Running <br><br></h3><br><br>
+            <h2>Important Notice</h2>
+            <h3 class="h3-side">Make sure to enable https: on to your domain ( Check Home page for steps )</h3><br><br>
+           
+            <h2>Conclusion</h2>
+            <h3 class="h3-side">You now have Django running with Gunicorn behind Nginx. Your Django application should now be accessible through your domain or IP address.</h3>
+
+            </div>
+            <br><br><br>
+        </main>
+
+        <button class="btn btn-primary move-to-top" id="moveToTopBtn">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>

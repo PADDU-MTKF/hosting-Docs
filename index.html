@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lazy Hosting</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top top-nav">
+        <a class="navbar-brand" href="index.html">Lazy Hosting</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="setup.html">Server Setup</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="django.html">Django</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="fastapi.html">FastAPI</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="flask.html">Flask</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mern.html">MERN</a>
+                </li>
+                
+            </ul>
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="settingsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Settings
+                </a>
+                <div class="dropdown-menu dropdown-menu-right p-4" aria-labelledby="settingsDropdown">
+                    <div class="form-group">
+                        <label for="projectFolderName">ProjectFolderName</label>
+                        <input type="text" class="form-control" id="projectFolderName" placeholder="Enter ProjectFolderName">
+                    </div>
+                    <div class="form-group">
+                        <label for="projectName">ProjectName</label>
+                        <input type="text" class="form-control" id="projectName" placeholder="Enter ProjectName">
+                    </div>
+                    <div class="form-group">
+                        <label for="appName">AppName</label>
+                        <input type="text" class="form-control" id="appName" placeholder="Enter AppName">
+                    </div>
+                    <div class="form-group">
+                        <label for="userName">UserName</label>
+                        <input type="text" class="form-control" id="userName" placeholder="Enter UserName">
+                    </div>
+                    <button class="btn btn-primary" onclick="applySettings()">Apply</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main" class="container mt-5 pt-5">
+       
+
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1>Basic Linux Commands</h1>
+        </div>
+
+        <div class="content-box">
+            <br>
+            <h2>Linux Maintenance Tips</h2>
+            <h3 class="h3-side">When using Linux, it's essential to keep your system updated:</h3>
+            
+                
+                <pre class="bg-light p-3 code-block"><code>sudo apt update</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="sudo apt update"><i class="fas fa-copy"></i></button></pre>
+                <pre class="bg-light p-3 code-block"><code>sudo apt upgrade</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="sudo apt upgrade"><i class="fas fa-copy"></i></button></pre>
+            
+                <br><br>
+
+                <h2>Creating Python Virtual env</h2>
+            <h3 class="h3-side">Create , Activate , Deactivate</h3>
+        
+                <pre class="bg-light p-3 code-block"><code>virtualenv env</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="virtualenv env"><i class="fas fa-copy"></i></button></pre>
+                <pre class="bg-light p-3 code-block"><code>source env/bin/activate</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="source env/bin/activate"><i class="fas fa-copy"></i></button></pre>
+                <pre class="bg-light p-3 code-block"><code>deactivate</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="deactivate"><i class="fas fa-copy"></i></button></pre>
+            <br><br>
+
+
+                <h2>Enable https on the domain</h2>
+                <h3 class="h3-side">Install Certbot</h3>
+
+                <pre class="bg-light p-3 code-block"><code>sudo apt install -y certbot python3-certbot-nginx</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="sudo apt install -y certbot python3-certbot-nginx"><i class="fas fa-copy"></i></button></pre>
+                
+                <h3 class="h3-side">Install Certificate on Nginx ( Perform this step every time a new domain is added with Nginx )</h3>
+                
+                <pre class="bg-light p-3 code-block"><code>sudo certbot --nginx -d your_domain -d www.your_domain</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="sudo certbot --nginx -d your_domain -d www.your_domain"><i class="fas fa-copy"></i></button></pre>
+                
+                <h3 class="h3-side">Verify the Accessibility</h3>
+                <pre class="bg-light p-3 code-block"><code>https://your_domain</code></pre>
+                
+                <h3 class="h3-side">Test Auto-Renewal</h3>
+                <pre class="bg-light p-3 code-block"><code>sudo certbot renew --dry-run</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="sudo certbot renew --dry-run"><i class="fas fa-copy"></i></button></pre>
+                <h3 class="h3-side border-bottom">If the above command doesn't throw an error, it means your SSL certificate <br>will be renewed automatically without any issues. <br><br></h3>
+                <br><br>
+            
+            
+
+
+
+
+            <h2>Here are some fundamental Linux commands for navigation and file management</h2>
+
+            <h3 class="h3-side">Creates a new directory (Folder)</h3>
+            <pre class="bg-light p-3 code-block"><code>mkdir ProjectFolderName</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="mkdir name"><i class="fas fa-copy"></i></button></pre>
+
+            <h3 class="h3-side">Changes directory to ProjectFolderName'cd ..' to go back one directory.</h3>
+            <pre class="bg-light p-3 code-block"><code>cd ProjectFolderName</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="cd name"><i class="fas fa-copy"></i></button></pre>
+
+
+            <h3 class="h3-side">To go back one directory.</h3>
+            <pre class="bg-light p-3 code-block"><code>cd ..</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="cd .."><i class="fas fa-copy"></i></button></pre>
+            
+            <h3 class="h3-side">Check Current Directory.</h3>
+            <pre class="bg-light p-3 code-block"><code>pwd</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="pwd"><i class="fas fa-copy"></i></button></pre>
+
+            <h3 class="h3-side">Removes the directory ProjectFolderName and all its contents (use with caution).</h3>
+            <pre class="bg-light p-3 code-block"><code>sudo rm -rf ProjectFolderName</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="sudo rm -rf folderName"><i class="fas fa-copy"></i></button></pre>
+
+            <br>
+            
+        </div>
+
+        <div class="content-box mt-5">
+            <h2>Additional Useful Commands</h2>
+            <h3 class="h3-side">Explore more useful Linux commands for everyday tasks:</h3>
+            <ul class="more-list">
+                <li><strong>List Files and Directories:</strong> <code>ls</code></li>
+                <li><strong>Copy Files:</strong> <code>cp source destination</code></li>
+                <li><strong>Move Files:</strong> <code>mv source destination</code></li>
+                <li><strong>Edit a File:</strong> <code>nano filename</code></li>
+                <li><strong>View System Information:</strong> <code>uname -a</code></li>
+                <li><strong>Check Disk Usage:</strong> <code>df -h</code></li>
+            </ul>
+        </div>
+
+        <br>
+        <div class="content-box mt-5">
+            <h2>Reference Links</h2>
+            <ul class="more-list">
+                <li><a href="https://www.codewithharry.com/blogpost/django-deploy-nginx-gunicorn/" target="_blank">Master Reference - Django Deploy with Nginx and Gunicorn</a></li>
+                <li><a href="https://docs.vultr.com/how-to-deploy-fastapi-applications-with-gunicorn-and-nginx-on-ubuntu-20-04" target="_blank">FastAPI Deployment with Gunicorn and Nginx</a></li>
+                <li><a href="https://youtube.com/playlist?list=PLu0W_9lII9aiBNXUisDdSmfNbsKq407XC&si=TJqS19pcuM9rhzV0" target="_blank">Full YouTube Playlist on Hosting</a></li>
+              
+            </ul>
+        </div>
+        <br><br><br>
+    </main>
+
+    <button class="btn btn-primary move-to-top" id="moveToTopBtn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>

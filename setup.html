@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Setup</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top top-nav">
+        <a class="navbar-brand" href="index.html">Lazy Hosting</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="setup.html">Server Setup</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="django.html">Django</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="fastapi.html">FastAPI</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="flask.html">Flask</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mern.html">MERN</a>
+                </li>
+                
+            </ul>
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="settingsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Settings
+                </a>
+                <div class="dropdown-menu dropdown-menu-right p-4" aria-labelledby="settingsDropdown">
+                    <div class="form-group">
+                        <label for="projectFolderName">ProjectFolderName</label>
+                        <input type="text" class="form-control" id="projectFolderName" placeholder="Enter ProjectFolderName">
+                    </div>
+                    <div class="form-group">
+                        <label for="projectName">ProjectName</label>
+                        <input type="text" class="form-control" id="projectName" placeholder="Enter ProjectName">
+                    </div>
+                    <div class="form-group">
+                        <label for="appName">AppName</label>
+                        <input type="text" class="form-control" id="appName" placeholder="Enter AppName">
+                    </div>
+                    <div class="form-group">
+                        <label for="userName">UserName</label>
+                        <input type="text" class="form-control" id="userName" placeholder="Enter UserName">
+                    </div>
+                    <button class="btn btn-primary" onclick="applySettings()">Apply</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main" class="container mt-5 pt-5">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1>Initial VPS Setup</h1>
+        </div>
+
+        <div class="content-box">
+            <br>
+
+
+
+
+            <h2>Creating a Non-root user</h2>
+            <h3 class="h3-side">Log in to your VPS</h3>
+            <pre class="bg-light p-3 code-block"><code>ssh root@your_server_ip</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="ssh root@your_server_ip"><i class="fas fa-copy"></i></button></pre>
+            
+            <h3 class="h3-side">Create a new root user</h3>
+            <pre class="bg-light p-3 code-block"><code>adduser UserName</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="adduser UserName"><i class="fas fa-copy"></i></button></pre>
+            
+            <h3 class="h3-side">Give the new user on demand root access </h3>
+            <pre class="bg-light p-3 code-block"><code>usermod -aG sudo UserName</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="usermod -aG sudo UserName"><i class="fas fa-copy"></i></button></pre>
+            
+            <h2>Setting Up Firewall</h2>
+            <h3 class="h3-side">Allow SSH to the VPS</h3>
+            <pre class="bg-light p-3 code-block"><code>sudo apt-get install ssh</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="sudo apt-get install ssh"><i class="fas fa-copy"></i></button></pre>
+            <pre class="bg-light p-3 code-block"><code>ufw allow OpenSSH</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="ufw allow OpenSSH"><i class="fas fa-copy"></i></button></pre>
+            
+            <h3 class="h3-side">Enable Firewall</h3>
+            <pre class="bg-light p-3 code-block"><code>ufw enable</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="ufw enable"><i class="fas fa-copy"></i></button></pre>
+            
+            <h3 class="h3-side">Login Using The Newly Created User <br>( Dont close the previous terminal use new terminal)</h3>
+            <pre class="bg-light p-3 code-block"><code>ssh UserName@your_server_ip</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="ssh UserName@your_server_ip"><i class="fas fa-copy"></i></button></pre>
+            <br>
+            <h3 class="h3-side border-bottom">If You Can Login Through new UserName Then, Close The root Terminal and Never Login Using root again <br><br> </h3>
+
+
+            <br><br>
+
+
+
+
+            <h2>First Time Setup Commands</h2>
+            <h3 class="h3-side">Install Python 3, pip, development tools, and Nginx web server</h3>
+        
+
+            <pre class="bg-light p-3 code-block"><code>sudo apt install python3-pip python3-dev nginx</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="sudo apt install python3-pip python3-dev nginx"><i class="fas fa-copy"></i></button></pre>
+            
+            <h3 class="h3-side">Install virtualenv to create isolated Python environments</h3>
+
+            <pre class="bg-light p-3 code-block"><code>sudo pip3 install virtualenv</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="sudo pip3 install virtualenv"><i class="fas fa-copy"></i></button></pre>
+           
+            <h3 class="h3-side">Open port 8000 for incoming connections and testing (adjust as needed).</h3>
+
+
+            <pre class="bg-light p-3 code-block"><code>sudo ufw allow 8000</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="sudo ufw allow 8000"><i class="fas fa-copy"></i></button></pre>
+            
+
+            <h3 class="h3-side">Edit Nginx configuration to change the user directive to your username.</h3>
+            <pre class="bg-light p-3 code-block"><code>sudo nano /etc/nginx/nginx.conf</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="sudo nano /etc/nginx/nginx.conf"><i class="fas fa-copy"></i></button></pre>
+                <h3 class="h3-side">In The File change</h3>
+                    <pre class="bg-light p-3 code-block"><code>user www-data   TO   user UserName</code></pre>
+                
+            
+        </div>
+<br><br><br>
+        
+    </main>
+
+    <button class="btn btn-primary move-to-top" id="moveToTopBtn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>

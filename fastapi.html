@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastAPI VPS</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top top-nav">
+        <a class="navbar-brand" href="index.html">Lazy Hosting</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="setup.html">Server Setup</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="django.html">Django</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="fastapi.html">FastAPI</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="flask.html">Flask</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mern.html">MERN</a>
+                </li>
+                
+            </ul>
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="settingsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Settings
+                </a>
+                <div class="dropdown-menu dropdown-menu-right p-4" aria-labelledby="settingsDropdown">
+                    <div class="form-group">
+                        <label for="projectFolderName">ProjectFolderName</label>
+                        <input type="text" class="form-control" id="projectFolderName" placeholder="Enter ProjectFolderName">
+                    </div>
+                    <div class="form-group">
+                        <label for="projectName">ProjectName</label>
+                        <input type="text" class="form-control" id="projectName" placeholder="Enter ProjectName">
+                    </div>
+                    <div class="form-group">
+                        <label for="appName">AppName</label>
+                        <input type="text" class="form-control" id="appName" placeholder="Enter AppName">
+                    </div>
+                    <div class="form-group">
+                        <label for="userName">UserName</label>
+                        <input type="text" class="form-control" id="userName" placeholder="Enter UserName">
+                    </div>
+                    <button class="btn btn-primary" onclick="applySettings()">Apply</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main" class="container mt-5 pt-5">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1>Getting Started with FastAPI VPS Hosting</h1>
+        </div>
+
+        <div class="content-box">
+            <br>
+            <h5>NOTE: ProjectFolderName and ProjectName can be kept the same or different</h5>
+            <br>
+
+            <h2>Setting the project folder</h2>
+
+            <h3 class="h3-side">Creating Project folder & Changing Current Directory</h3>
+            <pre class="bg-light p-3 code-block"><code>mkdir ~/ProjectFolderName
+cd ~/ProjectFolderName</code> <button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="mkdir ~/ProjectFolderName\ncd ~/ProjectFolderName"><i class="fas fa-copy"></i></button></pre>
+
+
+            <h3 class="h3-side">Creating & activating Virtual env and installing FastAPI and gunicorn</h3>
+            <pre class="bg-light p-3 code-block"><code>virtualenv env
+source env/bin/activate
+pip install fastapi[all] gunicorn</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="virtualenv env\nsource env/bin/activate\npip install fastapi[all] gunicorn"><i class="fas fa-copy"></i></button></pre>
+
+
+            <h3 class="h3-side">Creating FastAPI app (or just git clone)</h3>
+            <pre class="bg-light p-3 code-block"><code>nano app.py</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="nano app.py"><i class="fas fa-copy"></i></button></pre>
+
+            
+            <h3 class="h3-side">Inside The File Add The Below Code</h3>
+            <pre class="bg-light p-3 code-block">
+<code>from fastapi import FastAPI
+                
+app = FastAPI()
+
+@app.get("/")
+async def home():
+    return {"message": "Hello World"}</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="from fastapi import FastAPI\n\napp = FastAPI()\n\n@app.get(&quot;/&quot;)\nasync def home():\n    return {&quot;message&quot;: &quot;Hello World&quot;}"><i class="fas fa-copy"></i></button></pre>
+    <h4 class="h3-side">Save by pressing <kbd>Ctrl</kbd>+<kbd>X</kbd> Then <kbd>Y</kbd> Then <kbd>Enter</kbd></h4><br>
+
+
+            <h3 class="h3-side">Testing the API with uvicorn</h3>
+            <pre class="bg-light p-3 code-block"><code>uvicorn --port 8000 app:app</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="uvicorn --port 8000 app:app"><i class="fas fa-copy"></i></button></pre>
+
+
+            <h3 class="h3-side">Testing the API with gunicorn</h3>
+            <pre class="bg-light p-3 code-block"><code>gunicorn -b :8000 -k uvicorn.workers.UvicornWorker app:app</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="gunicorn -b :8000 -k uvicorn.workers.UvicornWorker app:app"><i class="fas fa-copy"></i></button></pre>
+
+
+            <h3 class="h3-side">Creating gunicorn configuration file</h3>
+            <pre class="bg-light p-3 code-block"><code>nano gunicorn_conf.py</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="nano gunicorn_conf.py"><i class="fas fa-copy"></i></button></pre>
+
+            <h3 class="h3-side">Inside The File Add The Below Code</h3>
+            <pre class="bg-light p-3 code-block">
+<code>from multiprocessing import cpu_count
+
+# Socket Path
+bind = 'unix:/home/UserName/ProjectFolderName/gunicorn.sock'
+
+# Worker Options
+workers = cpu_count() + 1
+worker_class = 'uvicorn.workers.UvicornWorker'
+
+# Logging Options
+loglevel = 'debug'
+accesslog = '/home/UserName/ProjectFolderName/access_log'
+errorlog = '/home/UserName/ProjectFolderName/error_log'</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="from multiprocessing import cpu_count\n\n# Socket Path\nbind = 'unix:/home/UserName/ProjectFolderName/gunicorn.sock'\n\n# Worker Options\nworkers = cpu_count() + 1\nworker_class = 'uvicorn.workers.UvicornWorker'\n\n# Logging Options\nloglevel = 'debug'\naccesslog = '/home/UserName/ProjectFolderName/access_log'\nerrorlog = '/home/UserName/ProjectFolderName/error_log'\n"><i class="fas fa-copy"></i></button></pre>
+<h4 class="h3-side">Save by pressing <kbd>Ctrl</kbd>+<kbd>X</kbd> Then <kbd>Y</kbd> Then <kbd>Enter</kbd></h4><br><br><br>
+
+            <h2>Configuring Gunicorn</h2>
+
+            <h3 class="h3-side">Creating and Editing the Service Unit File</h3>
+            <pre class="bg-light p-3 code-block"><code>sudo nano /etc/systemd/system/ProjectName.service</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="sudo nano /etc/systemd/system/ProjectName.service"><i class="fas fa-copy"></i></button></pre>
+
+            <h3 class="h3-side">Inside The File Add The Below Code</h3>
+
+            <pre class="bg-light p-3 code-block">
+<code>[Unit]
+Description=Gunicorn Daemon for FastAPI Demo Application
+After=network.target
+
+[Service]
+User=UserName
+Group=www-data
+WorkingDirectory=/home/UserName/ProjectFolderName
+ExecStart=/home/UserName/ProjectFolderName/env/bin/gunicorn -c gunicorn_conf.py app:app
+
+[Install]
+WantedBy=multi-user.target</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="[Unit]\nDescription=Gunicorn Daemon for FastAPI Demo Application\nAfter=network.target\n\n[Service]\nUser=UserName\nGroup=www-data\nWorkingDirectory=/home/UserName/ProjectFolderName\nExecStart=/home/UserName/ProjectFolderName/env/bin/gunicorn -c gunicorn_conf.py app:app\n\n[Install]\nWantedBy=multi-user.target\n"><i class="fas fa-copy"></i></button></pre>
+
+<h4 class="h3-side">Save by pressing <kbd>Ctrl</kbd>+<kbd>X</kbd> Then <kbd>Y</kbd> Then <kbd>Enter</kbd></h4><br>
+                
+
+
+            <h3 class="h3-side">Starting and Enabling the Service</h3>
+            <pre class="bg-light p-3 code-block"><code>sudo systemctl daemon-reload
+sudo systemctl start ProjectName
+sudo systemctl enable ProjectName
+</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="sudo systemctl daemon-reload\nsudo systemctl start ProjectName\nsudo systemctl enable ProjectName\n"><i class="fas fa-copy"></i></button></pre>
+
+
+<br><br><br>
+            <h2>Configuring Nginx</h2>
+
+            <h3 class="h3-side">Creating and Editing the Nginx Configuration File</h3>
+            <pre class="bg-light p-3 code-block"><code>sudo nano /etc/nginx/sites-available/ProjectName</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="sudo nano /etc/nginx/sites-available/ProjectName"><i class="fas fa-copy"></i></button></pre>
+
+            <h3 class="h3-side">Inside The File Add The Below Code</h3>
+            <pre class="bg-light p-3 code-block">
+<code>server {
+    listen 80;
+    server_name www.lazythinkers.in;
+
+    location / {
+        proxy_pass http://unix:/home/UserName/ProjectFolderName/gunicorn.sock;
+        include proxy_params;
+    }
+
+    location /static/ {
+        alias /home/UserName/ProjectFolderName/static/;
+    }
+}</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="server {\n    listen 80;\n    server_name your_domain_or_ip;\n\n    location / {\n        proxy_pass http://unix:/home/UserName/ProjectFolderName/gunicorn.sock;\n        include proxy_params;\n    }\n\n    location /static/ {\n        alias /home/UserName/ProjectFolderName/static/;\n    }\n}\n"><i class="fas fa-copy"></i></button></pre>
+
+            <h4 class="h3-side">Save by pressing <kbd>Ctrl</kbd>+<kbd>X</kbd> Then <kbd>Y</kbd> Then <kbd>Enter</kbd></h4><br>
+                
+                
+
+            <h3 class="h3-side">Creating a Symbolic Link</h3>
+            <pre class="bg-light p-3 code-block"><code>sudo ln -s /etc/nginx/sites-available/ProjectName /etc/nginx/sites-enabled</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="sudo ln -s /etc/nginx/sites-available/ProjectName /etc/nginx/sites-enabled"><i class="fas fa-copy"></i></button></pre>
+
+
+            <h3 class="h3-side">Testing and Restarting Nginx</h3>
+            <pre class="bg-light p-3 code-block"><code>sudo nginx -t
+sudo systemctl restart nginx</code><button class="btn btn-sm btn-secondary copy-btn" data-clipboard-text="sudo nginx -t\nsudo systemctl restart nginx\n"><i class="fas fa-copy"></i></button></pre>
+
+
+            <h3 class="h3-side border-bottom">The App Should Be Up and Running <br><br></h3><br><br>
+            <h2>Important Notice</h2>
+            <h3 class="h3-side">Make sure to enable https: on to your domain ( Check Home page for steps )</h3><br><br>
+
+            <h2>Conclusion</h2>
+            <h3 class="h3-side">You now have FastAPI running with Gunicorn behind Nginx. Your FastAPI application should now be accessible through your domain or IP address.</h3>
+
+        </div>
+        <br><br><br>
+    </main>
+
+    <button class="btn btn-primary move-to-top" id="moveToTopBtn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MERN VPS</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top top-nav">
+        <a class="navbar-brand" href="index.html">Lazy Hosting</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="setup.html">Server Setup</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="django.html">Django</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="fastapi.html">FastAPI</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="flask.html">Flask</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="mern.html">MERN</a>
+                </li>
+                
+            </ul>
+            <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="settingsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Settings
+                </a>
+                <div class="dropdown-menu dropdown-menu-right p-4" aria-labelledby="settingsDropdown">
+                    <div class="form-group">
+                        <label for="projectFolderName">ProjectFolderName</label>
+                        <input type="text" class="form-control" id="projectFolderName" placeholder="Enter ProjectFolderName">
+                    </div>
+                    <div class="form-group">
+                        <label for="projectName">ProjectName</label>
+                        <input type="text" class="form-control" id="projectName" placeholder="Enter ProjectName">
+                    </div>
+                    <div class="form-group">
+                        <label for="appName">AppName</label>
+                        <input type="text" class="form-control" id="appName" placeholder="Enter AppName">
+                    </div>
+                    <div class="form-group">
+                        <label for="userName">UserName</label>
+                        <input type="text" class="form-control" id="userName" placeholder="Enter UserName">
+                    </div>
+                    <button class="btn btn-primary" onclick="applySettings()">Apply</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main role="main" class="container mt-5 pt-5">
+       
+    </main>
+
+    <button class="btn btn-primary move-to-top" id="moveToTopBtn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
