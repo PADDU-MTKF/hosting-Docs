@@ -8,13 +8,13 @@ This project documents **real-world production deployment steps** that I regular
 
 ## ✨ Features
 
-- 📘 Step-by-step **production deployment references**
-- 🖥️ **Linux initial server setup** checklist
-- 🔐 VPS security and best practices
-- 🧰 Deployment guides for multiple frameworks
-- ⚡ Common Linux commands for quick access
-- 🌐 Fully **static site** (no backend, no database)
-- 🧠 Designed for **fast lookup**, not tutorials
+- Step-by-step **production deployment references**
+- **Linux initial server setup** checklist
+- VPS security and best practices
+- Deployment guides for multiple frameworks
+- Common Linux commands for quick access
+- Fully **static site** (no backend, no database)
+- Designed for **fast lookup**, not tutorials
 
 ---
 
@@ -32,6 +32,12 @@ It is **not a beginner tutorial**, but a **practical deployment reference**.
 ---
 
 ## 🛠️ Technologies Used
+<p align="left">
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" width="32" />
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" width="32" />
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" width="32" />
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="Linux" width="30" height="30" />
+</p>
 
 - **HTML5**
 - **CSS3**
